@@ -3,8 +3,11 @@ import MDAnalysis as md
 from tqdm import tqdm
 from sys import getsizeof
 import time
-from numba import jit, generated_jit, vectorize, float64
+#from numba import jit, generated_jit, vectorize, float64
+import cython
+import util
 
+'''
 @jit([float64(float64[:,:], float64[:,:])],
       nopython=True,
       fastmath=True,
@@ -13,6 +16,7 @@ from numba import jit, generated_jit, vectorize, float64
       parallel=False)
 def get_vac(vel0, vel1):
     return np.sum(np.multiply(vel0, vel1))
+'''
 
 def vac(u, selection, tau=2.0):
     num_frame = len(u.trajectory)
@@ -36,7 +40,8 @@ def vac(u, selection, tau=2.0):
     for i in tqdm(range(num_frame - len_vac), desc="Loop of VAC calculation"):
         vel0 = vel_mat[i]
         for j in range(len_vac):
-            vac_vec[j] += get_vac(vel0, vel_mat[i+j])
+            #vac_vec[j] += get_vac(vel0, vel_mat[i+j])
+            vac_vec[j] += util.get_vac(vel0, vel_mat[i+j], num_mol, 3)
 
     vac_vec *= mass_vec[0]
     vac_vec /= (num_frame - len_vac)*100
