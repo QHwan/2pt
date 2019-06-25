@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.fft import rfft, hfft
 import MDAnalysis as md
 from tqdm import tqdm
 from sys import getsizeof
@@ -48,6 +49,7 @@ def vac(u, selection, tau=2.0):
 
     return np.transpose([t_vec, vac_vec])
 
+'''
 def main():
     u = md.Universe("md.tpr", "md.trr")
     mols = u.select_atoms("all")
@@ -55,6 +57,21 @@ def main():
     vac_vec = vac(u, "all", tau=3.0)
 
     np.savetxt("test.xvg", vac_vec, fmt="%5f")
+'''
+
+def main():
+    imat = np.loadtxt("test.xvg")
+    fft_vec = np.absolute(hfft(imat[:,1]))
+
+    vel_c = 299792458.  # m/s
+    x_vec = np.zeros(len(fft_vec))
+    df = 1/(imat[-1,0]*1e-12*vel_c) / 100 / 2. # 2. for hfft
+    for i in range(len(x_vec)):
+        x_vec[i] = i*df
+
+    omat = np.transpose([x_vec, fft_vec])
+    print(fft_vec)
+    np.savetxt("dos.xvg", omat, fmt="%5f")
 
 start = time.time()
 main()
