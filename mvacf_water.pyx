@@ -7,105 +7,84 @@ cimport numpy as np
 import sys
 import math
 import time
-from optparse import OptionParser as OP
 
+from tqdm import tqdm
 
-DTYPE = np.float64
-ctypedef np.float64_t DTYPE_t
-
-def parsecmd(): 
-	parser=OP()
-
-
-	parser.add_option('--file',dest='file',nargs=2,type='string', help='(1) vocity.xvg, (2) coord.xvg')
-	parser.add_option('--time', dest='time', nargs=2, type='float', help='(1) t (2) dt')
-	parser.add_option('--nf',dest='frame',nargs=1,type='int',help='number of frame')
-	parser.add_option('--nm',dest='molecule',nargs=1,type='int',help='number of molecule number')
-	parser.add_option('--ofile',dest='ofile',nargs=1,type='string',help='mvacf.xvg')
-
-
-	(options, args) = parser.parse_args(sys.argv[1:])
-
-	return options, args
+import MDAnalysis as md
 
 def main():
-
-	start = time.time()
-
-	(options,args)=parsecmd()
 
 	cdef unsigned int i, j, k, l, num_mol, num_frame, n_per_mol
 	cdef int frame
 
 	
-	cdef float m_o, m_h, m_c, t, dt, M
-	cdef float com_x, com_y, com_z, v_com_x, v_com_y, v_com_z, v_vib_x, v_vib_y, v_vib_z
-	cdef float rr_x, rr_y, rr_z, I_xx, I_yy, I_zz, I_xy, I_yx, I_yz, I_zy, I_xz, I_zx, Ip_x, Ip_y, Ip_z, Ip_tot
-	cdef float w_x, w_y, w_z, w2_x, w2_y, w2_z
+	cdef double m_o, m_h, m_c, t, dt, M
+	cdef double com_x, com_y, com_z, v_com_x, v_com_y, v_com_z, v_vib_x, v_vib_y, v_vib_z
+	cdef double rr_x, rr_y, rr_z, I_xx, I_yy, I_zz, I_xy, I_yx, I_yz, I_zy, I_xz, I_zx, Ip_x, Ip_y, Ip_z, Ip_tot
+	cdef double w_x, w_y, w_z, w2_x, w2_y, w2_z
 
 
+	start = time.time()
 
+	u = md.Universe("..\data\2pt.tpr", "..\data\2pt.trr")
 
-	v_filename, coord_filename = options.file
-	v_file = open(v_filename,'r')
-	coord_file = open(coord_filename,'r')
-
-	ofilename = options.ofile
-	num_frame = options.frame
-	num_mol = options.molecule
-	t, dt = options.time
+	ofilename = "vac.xvg"
+	num_frame = len(u.trajectory)
+	num_mol = len(u.select_atoms("name OW"))
+	t = 5
+	dt = u.trajectory[1].time - u.trajectory[0].time
 
 	m_o = 15.99998
 	m_h = 1.00001
 	m_c = 12.011
 	M = (m_o+m_h*2)
 	n_per_mol = 3
-	cdef np.ndarray[DTYPE_t, ndim=1] mass_arr = np.array([m_o, m_h, m_h])
+	cdef double[:] mass_arr = np.array([m_o, m_h, m_h])
 
 	# Always check!!
 	# C1, H1, H2, H3, O1, H4
 
 
-	cdef np.ndarray[DTYPE_t, ndim=4] r_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
+	cdef double[:,:,:,:] r_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
 
-	cdef np.ndarray[DTYPE_t, ndim=4] v_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] v_trn_mat = np.zeros((num_frame,num_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=4] w_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] r_arr = np.zeros((num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] v_arr = np.zeros((num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=4] v_rot_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=4] v_vib_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] evec_x_mat = np.zeros((num_frame,num_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] evec_y_mat = np.zeros((num_frame,num_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] evec_z_mat = np.zeros((num_frame,num_mol,3))
-
-
-	#cdef np.ndarray[DTYPE_t, ndim=3] r_com_mat = np.zeros((num_frame,n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] r_com_arr = np.zeros((n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] v_com_arr = np.zeros((n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] pr_com_arr = np.zeros((n_per_mol,3))
-
-	cdef np.ndarray[DTYPE_t, ndim=1] w_arr = np.zeros(3)
-
-	cdef np.ndarray[DTYPE_t, ndim=1] v_rot_arr = np.zeros(3)
-
-	cdef np.ndarray[DTYPE_t, ndim=1] v_com = np.zeros(3)
+	cdef double[:,:,:,:] v_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
+	cdef double[:,:,:] v_trn_mat = np.zeros((num_frame,num_mol,3))
+	cdef double[:,:,:,:] w_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
+	cdef double[:,:,:] r_arr = np.zeros((num_mol,n_per_mol,3))
+	cdef double[:,:,:] v_arr = np.zeros((num_mol,n_per_mol,3))
+	cdef double[:,:,:,:] v_rot_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
+	cdef double[:,:,:,:] v_vib_mat = np.zeros((num_frame,num_mol,n_per_mol,3))
+	cdef double[:,:,:] evec_x_mat = np.zeros((num_frame,num_mol,3))
+	cdef double[:,:,:] evec_y_mat = np.zeros((num_frame,num_mol,3))
+	cdef double[:,:,:] evec_z_mat = np.zeros((num_frame,num_mol,3))
 
 
-	cdef np.ndarray[DTYPE_t, ndim=2] I_mat = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] I_inv_mat = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] evec = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=1] Ip_arr = np.zeros(3)
-	cdef np.ndarray[DTYPE_t, ndim=3] Ip_mat = np.zeros((num_frame,num_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] R_mat = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] a1_mat = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=1] a2_mat = np.zeros(3)
-	cdef np.ndarray[DTYPE_t, ndim=2] a3_mat = np.zeros((3,3))
-	cdef np.ndarray[DTYPE_t, ndim=2] t_mat = np.zeros((3,3))
+	#cdef double[:,:,:] r_com_mat = np.zeros((num_frame,n_per_mol,3))
+	cdef double[:,:] r_com_arr = np.zeros((n_per_mol,3))
+	cdef double[:,:] v_com_arr = np.zeros((n_per_mol,3))
+	cdef double[:,:] pr_com_arr = np.zeros((n_per_mol,3))
 
-	cdef np.ndarray[DTYPE_t, ndim=2] L_arr = np.zeros((n_per_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=3] L_mat = np.zeros((num_frame,num_mol,3))
-	cdef np.ndarray[DTYPE_t, ndim=1] L_com_arr = np.zeros(3)
+	cdef double[:] w_arr = np.zeros(3)
+
+	cdef double[:] v_rot_arr = np.zeros(3)
+
+	cdef double[:] v_com = np.zeros(3)
+
+
+	cdef double[:,:] I_mat = np.zeros((3,3))
+	cdef double[:,:] I_inv_mat = np.zeros((3,3))
+	cdef double[:,:] evec = np.zeros((3,3))
+	cdef double[:] Ip_arr = np.zeros(3)
+	cdef double[:,:,:] Ip_mat = np.zeros((num_frame,num_mol,3))
+	cdef double[:,:] R_mat = np.zeros((3,3))
+	cdef double[:,:] a1_mat = np.zeros((3,3))
+	cdef double[:] a2_mat = np.zeros(3)
+	cdef double[:,:] a3_mat = np.zeros((3,3))
+	cdef double[:,:] t_mat = np.zeros((3,3))
+
+	cdef double[:,:] L_arr = np.zeros((n_per_mol,3))
+	cdef double[:,:,:] L_mat = np.zeros((num_frame,num_mol,3))
+	cdef double[:] L_com_arr = np.zeros(3)
 
 	cdef list r_str_arr 
 	cdef list v_str_arr
@@ -114,47 +93,26 @@ def main():
 	# Manually setup
 
 	## Filling r_matrix
-	frame = -1
-	for line in coord_file:
-		frame += 1
-		r_str_arr=line.split()
+	cdef double[:,:] buf_mat = np.zeros((num_mol*n_per_mol, 3))
+	for i, ts in enumerate(u.trajectory):
+		buf_mat = u.position
+		for j in range (num_mol):
+			for k in range (n_per_mol):
+				for l in range (3):
+					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
 
-		for i in range (num_mol):
-
-			for j in range (n_per_mol):
-
-				for k in range (3):
-
-					r_mat[frame,i,j,k] += float(r_str_arr[1+n_per_mol*3*i+j*3+k])
-
-
-
-
-	frame = -1
-	for line in v_file:
-
-		frame += 1
-		if frame % 100 == 0:
-			print frame
-
-		v_str_arr=line.split()
-		r_arr = r_mat[frame]
-		v_arr = np.zeros((num_mol,n_per_mol,3))
+		buf_mat = u.velocity
+		for j in range (num_mol):
+			for k in range (n_per_mol):
+				for l in range (3):
+					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
 
 
 
-		for i in range (num_mol):
-
-			for j in range (n_per_mol):
-
-				for k in range (3):
-					v_arr[i,j,k] += float(v_str_arr[1+n_per_mol*3*i+j*3+k])
-					v_mat[frame,i,j,k] += float(v_str_arr[1+n_per_mol*3*i+j*3+k])
-
-
-
-
+	for l in tqdm(range(num_frame)):
 		#Calculate molecule by molecule
+		r_arr = r_mat[l]
+		v_arr = v_mat[l]
 		for i in range (num_mol):
 			#print i
 
@@ -179,9 +137,9 @@ def main():
 			v_com_y /= M
 			v_com_z /= M
 
-			v_trn_mat[frame,i,0]+=v_com_x
-			v_trn_mat[frame,i,1]+=v_com_y
-			v_trn_mat[frame,i,2]+=v_com_z
+			v_trn_mat[l,i,0]+=v_com_x
+			v_trn_mat[l,i,1]+=v_com_y
+			v_trn_mat[l,i,2]+=v_com_z
 
 
 			# Calculate relative position and velocity vector of molecule with respect to the COM
@@ -266,9 +224,9 @@ def main():
 			#L_mat[frame,i,1] += L_com_arr[1]
 			#L_mat[frame,i,2] += L_com_arr[2]
 			for j in range (n_per_mol):
-				v_rot_mat[frame,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
-				v_rot_mat[frame,i,j,1] += w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
-				v_rot_mat[frame,i,j,2] += w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]
+				v_rot_mat[l,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
+				v_rot_mat[l,i,j,1] += w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
+				v_rot_mat[l,i,j,2] += w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]
 
 
 			#if i == 1:
@@ -283,30 +241,30 @@ def main():
 
 
 
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_tot_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_trn_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_rot_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_rot_x_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] buf_mvacf_rot_x_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_rot_y_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] buf_mvacf_rot_y_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_rot_z_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] buf_mvacf_rot_z_arr = np.zeros(int(t/dt))
-	cdef np.ndarray[DTYPE_t,ndim=1] mvacf_vib_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_tot_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_trn_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_rot_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_rot_x_arr = np.zeros(int(t/dt))
+	cdef double[:] buf_mvacf_rot_x_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_rot_y_arr = np.zeros(int(t/dt))
+	cdef double[:] buf_mvacf_rot_y_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_rot_z_arr = np.zeros(int(t/dt))
+	cdef double[:] buf_mvacf_rot_z_arr = np.zeros(int(t/dt))
+	cdef double[:] mvacf_vib_arr = np.zeros(int(t/dt))
 
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_trn_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_rot_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_rot_x_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_rot_y_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_rot_z_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] buf_vdot_rot_x_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] buf_vdot_rot_y_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] buf_vdot_rot_z_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=2] vdot_vib_arr = np.zeros((len(mvacf_trn_arr),num_mol))
-	cdef np.ndarray[DTYPE_t,ndim=1] t_arr = np.zeros(len(mvacf_trn_arr))
+	cdef double[:,:] vdot_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_trn_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_rot_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_rot_x_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_rot_y_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_rot_z_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] buf_vdot_rot_x_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] buf_vdot_rot_y_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] buf_vdot_rot_z_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:,:] vdot_vib_arr = np.zeros((len(mvacf_trn_arr),num_mol))
+	cdef double[:] t_arr = np.zeros(len(mvacf_trn_arr))
 
-	cdef float buf_mvacf
+	cdef double buf_mvacf
 	buf_mvacf = 0
 
 	cdef int len_mvacf_trn_arr
