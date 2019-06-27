@@ -7,10 +7,11 @@ import sys
 import math
 import time
 from mvacf_water import main
+import MDAnalysis as md
 
 start = time.time()
 
 main()
 
 end = time.time() - start
-print end
+print(end)
