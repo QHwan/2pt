@@ -4049,7 +4049,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):             # <<<<<<<<<<<<<<
  * 				for l in range (3):
- * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  */
       __pyx_t_17 = __pyx_v_n_per_mol;
       __pyx_t_18 = __pyx_t_17;
@@ -4060,7 +4060,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):
  * 				for l in range (3):             # <<<<<<<<<<<<<<
- * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  * 
  */
         for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
@@ -4069,7 +4069,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
           /* "vac.pyx":85
  * 			for k in range (n_per_mol):
  * 				for l in range (3):
- * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]             # <<<<<<<<<<<<<<
+ * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1             # <<<<<<<<<<<<<<
  * 
  * 		buf_mat = h2o.velocities
  */
@@ -4113,13 +4113,13 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
             __Pyx_RaiseBufferIndexError(__pyx_t_23);
             __PYX_ERR(0, 85, __pyx_L1_error)
           }
-          *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_mat.data + __pyx_t_24 * __pyx_v_r_mat.strides[0]) ) + __pyx_t_25 * __pyx_v_r_mat.strides[1]) ) + __pyx_t_26 * __pyx_v_r_mat.strides[2]) ) + __pyx_t_27 * __pyx_v_r_mat.strides[3]) )) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_buf_mat.data + __pyx_t_21 * __pyx_v_buf_mat.strides[0]) ) + __pyx_t_22 * __pyx_v_buf_mat.strides[1]) )));
+          *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_mat.data + __pyx_t_24 * __pyx_v_r_mat.strides[0]) ) + __pyx_t_25 * __pyx_v_r_mat.strides[1]) ) + __pyx_t_26 * __pyx_v_r_mat.strides[2]) ) + __pyx_t_27 * __pyx_v_r_mat.strides[3]) )) = ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_buf_mat.data + __pyx_t_21 * __pyx_v_buf_mat.strides[0]) ) + __pyx_t_22 * __pyx_v_buf_mat.strides[1]) ))) * 0.1);
         }
       }
     }
 
     /* "vac.pyx":87
- * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  * 
  * 		buf_mat = h2o.velocities             # <<<<<<<<<<<<<<
  * 		for j in range (n_h2os):
@@ -4151,7 +4151,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):             # <<<<<<<<<<<<<<
  * 				for l in range (3):
- * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  */
       __pyx_t_17 = __pyx_v_n_per_mol;
       __pyx_t_18 = __pyx_t_17;
@@ -4162,7 +4162,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):
  * 				for l in range (3):             # <<<<<<<<<<<<<<
- * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  * 
  */
         for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
@@ -4171,7 +4171,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
           /* "vac.pyx":91
  * 			for k in range (n_per_mol):
  * 				for l in range (3):
- * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]             # <<<<<<<<<<<<<<
+ * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1             # <<<<<<<<<<<<<<
  * 
  * 	for l in tqdm(range(n_frames)):
  */
@@ -4215,7 +4215,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
             __Pyx_RaiseBufferIndexError(__pyx_t_23);
             __PYX_ERR(0, 91, __pyx_L1_error)
           }
-          *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_mat.data + __pyx_t_30 * __pyx_v_v_mat.strides[0]) ) + __pyx_t_31 * __pyx_v_v_mat.strides[1]) ) + __pyx_t_32 * __pyx_v_v_mat.strides[2]) ) + __pyx_t_33 * __pyx_v_v_mat.strides[3]) )) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_buf_mat.data + __pyx_t_28 * __pyx_v_buf_mat.strides[0]) ) + __pyx_t_29 * __pyx_v_buf_mat.strides[1]) )));
+          *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_mat.data + __pyx_t_30 * __pyx_v_v_mat.strides[0]) ) + __pyx_t_31 * __pyx_v_v_mat.strides[1]) ) + __pyx_t_32 * __pyx_v_v_mat.strides[2]) ) + __pyx_t_33 * __pyx_v_v_mat.strides[3]) )) = ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_buf_mat.data + __pyx_t_28 * __pyx_v_buf_mat.strides[0]) ) + __pyx_t_29 * __pyx_v_buf_mat.strides[1]) ))) * 0.1);
         }
       }
     }
@@ -4231,7 +4231,7 @@ static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "vac.pyx":93
- * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  * 
  * 	for l in tqdm(range(n_frames)):             # <<<<<<<<<<<<<<
  * 		#Calculate molecule by molecule
@@ -6544,7 +6544,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     }
 
     /* "vac.pyx":93
- * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+ * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
  * 
  * 	for l in tqdm(range(n_frames)):             # <<<<<<<<<<<<<<
  * 		#Calculate molecule by molecule

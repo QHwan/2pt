@@ -82,13 +82,13 @@ cpdef main():
 		for j in range (n_h2os):
 			for k in range (n_per_mol):
 				for l in range (3):
-					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
 
 		buf_mat = h2o.velocities
 		for j in range (n_h2os):
 			for k in range (n_per_mol):
 				for l in range (3):
-					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
+					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
 
 	for l in tqdm(range(n_frames)):
 		#Calculate molecule by molecule
