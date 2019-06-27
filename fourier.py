@@ -29,7 +29,7 @@ def main():
             fft_vec[len(t_vec)+i-1] += vac_vec[i]
 
     n = len(fft_vec)
-    k = (np.arange(n)*3.33565*1e-11)/(n*dt*1e-12) # f = 1/(N*t), 1 Hz = 3.33565*1e-11 cm-1
+    k = (np.arange(n)*3.33565*1e-11)/(n*dt*1e-12) # f = 1/(n*t), 1 Hz = 3.33565*1e-11 cm-1
     T = 131.744
     freq_vec = k # two sides frequency range
     freq_vec = freq_vec[range(n/2)]
