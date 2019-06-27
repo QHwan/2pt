@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "mvacf_water",
+        "name": "vac",
         "sources": [
-            "mvacf_water.pyx"
+            "vac.pyx"
         ]
     },
-    "module_name": "mvacf_water"
+    "module_name": "vac"
 }
 END: Cython Metadata */
 
@@ -603,8 +603,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__mvacf_water
-#define __PYX_HAVE_API__mvacf_water
+#define __PYX_HAVE__vac
+#define __PYX_HAVE_API__vac
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -843,7 +843,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "mvacf_water.pyx",
+  "vac.pyx",
   "__init__.pxd",
   "stringsource",
   "type.pxd",
@@ -2104,9 +2104,6 @@ static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_f
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
 
-/* FunctionExport.proto */
-static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig);
-
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
@@ -2154,7 +2151,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'mvacf_water' */
+/* Module declarations from 'vac' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2166,7 +2163,7 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static PyObject *__pyx_f_11mvacf_water_main(int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_3vac_main(int __pyx_skip_dispatch); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2201,11 +2198,11 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "mvacf_water"
-extern int __pyx_module_is_main_mvacf_water;
-int __pyx_module_is_main_mvacf_water = 0;
+#define __Pyx_MODULE_NAME "vac"
+extern int __pyx_module_is_main_vac;
+int __pyx_module_is_main_vac = 0;
 
-/* Implementation of 'mvacf_water' */
+/* Implementation of 'vac' */
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
@@ -2476,7 +2473,7 @@ static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_kp_s_vac_xvg;
 static PyObject *__pyx_n_s_velocities;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_11mvacf_water_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3vac_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2568,7 +2565,7 @@ static PyObject *__pyx_tuple__36;
 static PyObject *__pyx_codeobj__37;
 /* Late includes */
 
-/* "mvacf_water.pyx":15
+/* "vac.pyx":15
  * import matplotlib.pyplot as plt
  * 
  * cpdef main():             # <<<<<<<<<<<<<<
@@ -2576,8 +2573,8 @@ static PyObject *__pyx_codeobj__37;
  * 	cdef int i, j, k, l, n_h2os, n_frames, n_per_mol
  */
 
-static PyObject *__pyx_pw_11mvacf_water_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_3vac_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_f_3vac_main(CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -2900,7 +2897,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   int __pyx_t_273;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "mvacf_water.pyx":27
+  /* "vac.pyx":27
  * 
  * 
  * 	start = time.time()             # <<<<<<<<<<<<<<
@@ -2930,7 +2927,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_v_start = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":29
+  /* "vac.pyx":29
  * 	start = time.time()
  * 
  * 	u = md.Universe("2pt.tpr", "2pt.trr")             # <<<<<<<<<<<<<<
@@ -2948,7 +2945,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_v_u = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":31
+  /* "vac.pyx":31
  * 	u = md.Universe("2pt.tpr", "2pt.trr")
  * 
  * 	h2o = u.select_atoms("name OW or name HW1 or name HW2")             # <<<<<<<<<<<<<<
@@ -2975,7 +2972,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_v_h2o = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":32
+  /* "vac.pyx":32
  * 
  * 	h2o = u.select_atoms("name OW or name HW1 or name HW2")
  * 	ofilename = "vac.xvg"             # <<<<<<<<<<<<<<
@@ -2985,7 +2982,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __Pyx_INCREF(__pyx_kp_s_vac_xvg);
   __pyx_v_ofilename = __pyx_kp_s_vac_xvg;
 
-  /* "mvacf_water.pyx":33
+  /* "vac.pyx":33
  * 	h2o = u.select_atoms("name OW or name HW1 or name HW2")
  * 	ofilename = "vac.xvg"
  * 	n_frames = len(u.trajectory)             # <<<<<<<<<<<<<<
@@ -2998,7 +2995,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_frames = __pyx_t_4;
 
-  /* "mvacf_water.pyx":34
+  /* "vac.pyx":34
  * 	ofilename = "vac.xvg"
  * 	n_frames = len(u.trajectory)
  * 	n_h2os = len(u.select_atoms("name OW"))             # <<<<<<<<<<<<<<
@@ -3026,7 +3023,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_h2os = __pyx_t_4;
 
-  /* "mvacf_water.pyx":35
+  /* "vac.pyx":35
  * 	n_frames = len(u.trajectory)
  * 	n_h2os = len(u.select_atoms("name OW"))
  * 	t = 5             # <<<<<<<<<<<<<<
@@ -3035,7 +3032,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_t = 5.0;
 
-  /* "mvacf_water.pyx":36
+  /* "vac.pyx":36
  * 	n_h2os = len(u.select_atoms("name OW"))
  * 	t = 5
  * 	dt = u.trajectory[1].time - u.trajectory[0].time             # <<<<<<<<<<<<<<
@@ -3066,7 +3063,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_dt = __pyx_t_5;
 
-  /* "mvacf_water.pyx":38
+  /* "vac.pyx":38
  * 	dt = u.trajectory[1].time - u.trajectory[0].time
  * 
  * 	m_o = 15.99998             # <<<<<<<<<<<<<<
@@ -3075,7 +3072,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_m_o = 15.99998;
 
-  /* "mvacf_water.pyx":39
+  /* "vac.pyx":39
  * 
  * 	m_o = 15.99998
  * 	m_h = 1.00001             # <<<<<<<<<<<<<<
@@ -3084,7 +3081,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_m_h = 1.00001;
 
-  /* "mvacf_water.pyx":40
+  /* "vac.pyx":40
  * 	m_o = 15.99998
  * 	m_h = 1.00001
  * 	m_c = 12.011             # <<<<<<<<<<<<<<
@@ -3093,7 +3090,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_m_c = 12.011;
 
-  /* "mvacf_water.pyx":41
+  /* "vac.pyx":41
  * 	m_h = 1.00001
  * 	m_c = 12.011
  * 	M = (m_o+m_h*2)             # <<<<<<<<<<<<<<
@@ -3102,7 +3099,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_M = (__pyx_v_m_o + (__pyx_v_m_h * 2.0));
 
-  /* "mvacf_water.pyx":42
+  /* "vac.pyx":42
  * 	m_c = 12.011
  * 	M = (m_o+m_h*2)
  * 	n_per_mol = 3             # <<<<<<<<<<<<<<
@@ -3111,7 +3108,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
  */
   __pyx_v_n_per_mol = 3;
 
-  /* "mvacf_water.pyx":43
+  /* "vac.pyx":43
  * 	M = (m_o+m_h*2)
  * 	n_per_mol = 3
  * 	cdef float[:] m_arr = np.array([m_o, m_h, m_h], dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3165,7 +3162,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":49
+  /* "vac.pyx":49
  * 
  * 
  * 	cdef float[:,:,:,:] r_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3222,7 +3219,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "mvacf_water.pyx":51
+  /* "vac.pyx":51
  * 	cdef float[:,:,:,:] r_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)
  * 
  * 	cdef float[:,:,:,:] v_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3279,7 +3276,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "mvacf_water.pyx":52
+  /* "vac.pyx":52
  * 
  * 	cdef float[:,:,:,:] v_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:,:] v_trn_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3331,7 +3328,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "mvacf_water.pyx":53
+  /* "vac.pyx":53
  * 	cdef float[:,:,:,:] v_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:,:] v_trn_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)
  * 	cdef float[:,:,:] r_arr = np.zeros((n_h2os,n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3383,7 +3380,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "mvacf_water.pyx":54
+  /* "vac.pyx":54
  * 	cdef float[:,:,:] v_trn_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)
  * 	cdef float[:,:,:] r_arr = np.zeros((n_h2os,n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:,:] v_arr = np.zeros((n_h2os,n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3435,7 +3432,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "mvacf_water.pyx":55
+  /* "vac.pyx":55
  * 	cdef float[:,:,:] r_arr = np.zeros((n_h2os,n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:,:] v_arr = np.zeros((n_h2os,n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:,:,:] v_rot_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3492,7 +3489,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "mvacf_water.pyx":57
+  /* "vac.pyx":57
  * 	cdef float[:,:,:,:] v_rot_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)
  * 
  * 	cdef float[:,:] r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3539,7 +3536,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":58
+  /* "vac.pyx":58
  * 
  * 	cdef float[:,:] r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 	cdef float[:,:] v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3586,7 +3583,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":60
+  /* "vac.pyx":60
  * 	cdef float[:,:] v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 
  * 	cdef float[:] w_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3617,7 +3614,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":62
+  /* "vac.pyx":62
  * 	cdef float[:] w_arr = np.zeros(3, dtype=np.float32)
  * 
  * 	cdef float[:] v_rot_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3648,7 +3645,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":64
+  /* "vac.pyx":64
  * 	cdef float[:] v_rot_arr = np.zeros(3, dtype=np.float32)
  * 
  * 	cdef float[:] r_com = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3679,7 +3676,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":65
+  /* "vac.pyx":65
  * 
  * 	cdef float[:] r_com = np.zeros(3, dtype=np.float32)
  * 	cdef float[:] v_com = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3710,7 +3707,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":68
+  /* "vac.pyx":68
  * 
  * 
  * 	cdef float[:,:] I_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3741,7 +3738,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":69
+  /* "vac.pyx":69
  * 
  * 	cdef float[:,:] I_mat = np.zeros((3,3), dtype=np.float32)
  * 	cdef float[:,:] I_inv_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3772,7 +3769,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":70
+  /* "vac.pyx":70
  * 	cdef float[:,:] I_mat = np.zeros((3,3), dtype=np.float32)
  * 	cdef float[:,:] I_inv_mat = np.zeros((3,3), dtype=np.float32)
  * 	cdef float[:,:,:] Ip_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3824,7 +3821,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "mvacf_water.pyx":71
+  /* "vac.pyx":71
  * 	cdef float[:,:] I_inv_mat = np.zeros((3,3), dtype=np.float32)
  * 	cdef float[:,:,:] Ip_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)
  * 	cdef float[:,:] R_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3855,7 +3852,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":72
+  /* "vac.pyx":72
  * 	cdef float[:,:,:] Ip_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)
  * 	cdef float[:,:] R_mat = np.zeros((3,3), dtype=np.float32)
  * 	cdef float[:,:] t_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3886,7 +3883,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":74
+  /* "vac.pyx":74
  * 	cdef float[:,:] t_mat = np.zeros((3,3), dtype=np.float32)
  * 
  * 	cdef float[:] L_com_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3917,7 +3914,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "mvacf_water.pyx":79
+  /* "vac.pyx":79
  * 
  * 	## Filling r_matrix
  * 	cdef float[:,:] buf_mat = np.zeros((n_h2os*n_per_mol, 3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -3964,7 +3961,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":80
+  /* "vac.pyx":80
  * 	## Filling r_matrix
  * 	cdef float[:,:] buf_mat = np.zeros((n_h2os*n_per_mol, 3), dtype=np.float32)
  * 	for i, ts in enumerate(u.trajectory):             # <<<<<<<<<<<<<<
@@ -4019,7 +4016,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     __pyx_v_i = __pyx_t_12;
     __pyx_t_12 = (__pyx_t_12 + 1);
 
-    /* "mvacf_water.pyx":81
+    /* "vac.pyx":81
  * 	cdef float[:,:] buf_mat = np.zeros((n_h2os*n_per_mol, 3), dtype=np.float32)
  * 	for i, ts in enumerate(u.trajectory):
  * 		buf_mat = h2o.positions             # <<<<<<<<<<<<<<
@@ -4035,7 +4032,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "mvacf_water.pyx":82
+    /* "vac.pyx":82
  * 	for i, ts in enumerate(u.trajectory):
  * 		buf_mat = h2o.positions
  * 		for j in range (n_h2os):             # <<<<<<<<<<<<<<
@@ -4047,7 +4044,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
       __pyx_v_j = __pyx_t_16;
 
-      /* "mvacf_water.pyx":83
+      /* "vac.pyx":83
  * 		buf_mat = h2o.positions
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):             # <<<<<<<<<<<<<<
@@ -4059,7 +4056,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
       for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
         __pyx_v_k = __pyx_t_19;
 
-        /* "mvacf_water.pyx":84
+        /* "vac.pyx":84
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):
  * 				for l in range (3):             # <<<<<<<<<<<<<<
@@ -4069,7 +4066,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
         for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
           __pyx_v_l = __pyx_t_20;
 
-          /* "mvacf_water.pyx":85
+          /* "vac.pyx":85
  * 			for k in range (n_per_mol):
  * 				for l in range (3):
  * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]             # <<<<<<<<<<<<<<
@@ -4121,7 +4118,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
       }
     }
 
-    /* "mvacf_water.pyx":87
+    /* "vac.pyx":87
  * 					r_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
  * 
  * 		buf_mat = h2o.velocities             # <<<<<<<<<<<<<<
@@ -4137,7 +4134,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "mvacf_water.pyx":88
+    /* "vac.pyx":88
  * 
  * 		buf_mat = h2o.velocities
  * 		for j in range (n_h2os):             # <<<<<<<<<<<<<<
@@ -4149,7 +4146,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
       __pyx_v_j = __pyx_t_16;
 
-      /* "mvacf_water.pyx":89
+      /* "vac.pyx":89
  * 		buf_mat = h2o.velocities
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):             # <<<<<<<<<<<<<<
@@ -4161,7 +4158,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
       for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
         __pyx_v_k = __pyx_t_19;
 
-        /* "mvacf_water.pyx":90
+        /* "vac.pyx":90
  * 		for j in range (n_h2os):
  * 			for k in range (n_per_mol):
  * 				for l in range (3):             # <<<<<<<<<<<<<<
@@ -4171,7 +4168,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
         for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
           __pyx_v_l = __pyx_t_20;
 
-          /* "mvacf_water.pyx":91
+          /* "vac.pyx":91
  * 			for k in range (n_per_mol):
  * 				for l in range (3):
  * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]             # <<<<<<<<<<<<<<
@@ -4223,7 +4220,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
       }
     }
 
-    /* "mvacf_water.pyx":80
+    /* "vac.pyx":80
  * 	## Filling r_matrix
  * 	cdef float[:,:] buf_mat = np.zeros((n_h2os*n_per_mol, 3), dtype=np.float32)
  * 	for i, ts in enumerate(u.trajectory):             # <<<<<<<<<<<<<<
@@ -4233,7 +4230,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "mvacf_water.pyx":93
+  /* "vac.pyx":93
  * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
  * 
  * 	for l in tqdm(range(n_frames)):             # <<<<<<<<<<<<<<
@@ -4307,7 +4304,7 @@ static PyObject *__pyx_f_11mvacf_water_main(CYTHON_UNUSED int __pyx_skip_dispatc
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_l = __pyx_t_12;
 
-    /* "mvacf_water.pyx":95
+    /* "vac.pyx":95
  * 	for l in tqdm(range(n_frames)):
  * 		#Calculate molecule by molecule
  * 		r_arr = r_mat[l]             # <<<<<<<<<<<<<<
@@ -4348,7 +4345,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_r_arr, 1);
     __pyx_t_10.memview = NULL;
     __pyx_t_10.data = NULL;
 
-    /* "mvacf_water.pyx":96
+    /* "vac.pyx":96
  * 		#Calculate molecule by molecule
  * 		r_arr = r_mat[l]
  * 		v_arr = v_mat[l]             # <<<<<<<<<<<<<<
@@ -4389,7 +4386,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
     __pyx_t_10.memview = NULL;
     __pyx_t_10.data = NULL;
 
-    /* "mvacf_water.pyx":97
+    /* "vac.pyx":97
  * 		r_arr = r_mat[l]
  * 		v_arr = v_mat[l]
  * 		for i in range (n_h2os):             # <<<<<<<<<<<<<<
@@ -4401,7 +4398,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
     for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
       __pyx_v_i = __pyx_t_15;
 
-      /* "mvacf_water.pyx":101
+      /* "vac.pyx":101
  * 
  * 			# Calculate COM of molecule
  * 			r_com = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4433,7 +4430,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "mvacf_water.pyx":102
+      /* "vac.pyx":102
  * 			# Calculate COM of molecule
  * 			r_com = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -4445,7 +4442,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":103
+        /* "vac.pyx":103
  * 			r_com = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):
  * 				for k in range(3):             # <<<<<<<<<<<<<<
@@ -4455,7 +4452,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         for (__pyx_t_19 = 0; __pyx_t_19 < 3; __pyx_t_19+=1) {
           __pyx_v_k = __pyx_t_19;
 
-          /* "mvacf_water.pyx":104
+          /* "vac.pyx":104
  * 			for j in range(n_per_mol):
  * 				for k in range(3):
  * 					r_com[k] += m_arr[j]*r_arr[i,j,k]             # <<<<<<<<<<<<<<
@@ -4506,7 +4503,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         }
       }
 
-      /* "mvacf_water.pyx":106
+      /* "vac.pyx":106
  * 					r_com[k] += m_arr[j]*r_arr[i,j,k]
  * 
  * 			for j in range(3):             # <<<<<<<<<<<<<<
@@ -4516,7 +4513,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       for (__pyx_t_16 = 0; __pyx_t_16 < 3; __pyx_t_16+=1) {
         __pyx_v_j = __pyx_t_16;
 
-        /* "mvacf_water.pyx":107
+        /* "vac.pyx":107
  * 
  * 			for j in range(3):
  * 				r_com[j] /= M             # <<<<<<<<<<<<<<
@@ -4536,7 +4533,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         *((float *) ( /* dim=0 */ (__pyx_v_r_com.data + __pyx_t_39 * __pyx_v_r_com.strides[0]) )) /= __pyx_v_M;
       }
 
-      /* "mvacf_water.pyx":110
+      /* "vac.pyx":110
  * 
  * 			# Calculate v_COM of molecule
  * 			v_com = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4568,7 +4565,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "mvacf_water.pyx":111
+      /* "vac.pyx":111
  * 			# Calculate v_COM of molecule
  * 			v_com = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -4580,7 +4577,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":112
+        /* "vac.pyx":112
  * 			v_com = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):
  * 				for k in range(3):             # <<<<<<<<<<<<<<
@@ -4590,7 +4587,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         for (__pyx_t_19 = 0; __pyx_t_19 < 3; __pyx_t_19+=1) {
           __pyx_v_k = __pyx_t_19;
 
-          /* "mvacf_water.pyx":113
+          /* "vac.pyx":113
  * 			for j in range(n_per_mol):
  * 				for k in range(3):
  * 					v_com[k] += m_arr[j]*v_arr[i,j,k]             # <<<<<<<<<<<<<<
@@ -4641,7 +4638,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         }
       }
 
-      /* "mvacf_water.pyx":115
+      /* "vac.pyx":115
  * 					v_com[k] += m_arr[j]*v_arr[i,j,k]
  * 
  * 			for j in range(3):             # <<<<<<<<<<<<<<
@@ -4651,7 +4648,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
       for (__pyx_t_16 = 0; __pyx_t_16 < 3; __pyx_t_16+=1) {
         __pyx_v_j = __pyx_t_16;
 
-        /* "mvacf_water.pyx":116
+        /* "vac.pyx":116
  * 
  * 			for j in range(3):
  * 				v_com[j] /= M             # <<<<<<<<<<<<<<
@@ -4671,7 +4668,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_v_arr, 1);
         *((float *) ( /* dim=0 */ (__pyx_v_v_com.data + __pyx_t_45 * __pyx_v_v_com.strides[0]) )) /= __pyx_v_M;
       }
 
-      /* "mvacf_water.pyx":118
+      /* "vac.pyx":118
  * 				v_com[j] /= M
  * 
  * 			v_trn_mat[l,i] = v_com             # <<<<<<<<<<<<<<
@@ -4718,7 +4715,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
 
-      /* "mvacf_water.pyx":122
+      /* "vac.pyx":122
  * 
  * 			# Calculate relative position and velocity vector of molecule with respect to the COM
  * 			r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4766,7 +4763,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_11.memview = NULL;
       __pyx_t_11.data = NULL;
 
-      /* "mvacf_water.pyx":123
+      /* "vac.pyx":123
  * 			# Calculate relative position and velocity vector of molecule with respect to the COM
  * 			r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 			v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4814,7 +4811,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_11.memview = NULL;
       __pyx_t_11.data = NULL;
 
-      /* "mvacf_water.pyx":124
+      /* "vac.pyx":124
  * 			r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 			v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -4826,7 +4823,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":125
+        /* "vac.pyx":125
  * 			v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 			for j in range(n_per_mol):
  * 				for k in range(3):             # <<<<<<<<<<<<<<
@@ -4836,7 +4833,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         for (__pyx_t_19 = 0; __pyx_t_19 < 3; __pyx_t_19+=1) {
           __pyx_v_k = __pyx_t_19;
 
-          /* "mvacf_water.pyx":126
+          /* "vac.pyx":126
  * 			for j in range(n_per_mol):
  * 				for k in range(3):
  * 					r_com_arr[j,k] = r_arr[i,j,k] - r_com[k]             # <<<<<<<<<<<<<<
@@ -4890,7 +4887,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
           }
           *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_51 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_52 * __pyx_v_r_com_arr.strides[1]) )) = ((*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_arr.data + __pyx_t_47 * __pyx_v_r_arr.strides[0]) ) + __pyx_t_48 * __pyx_v_r_arr.strides[1]) ) + __pyx_t_49 * __pyx_v_r_arr.strides[2]) ))) - (*((float *) ( /* dim=0 */ (__pyx_v_r_com.data + __pyx_t_50 * __pyx_v_r_com.strides[0]) ))));
 
-          /* "mvacf_water.pyx":127
+          /* "vac.pyx":127
  * 				for k in range(3):
  * 					r_com_arr[j,k] = r_arr[i,j,k] - r_com[k]
  * 					v_com_arr[j,k] = v_arr[i,j,k] - v_com[k]             # <<<<<<<<<<<<<<
@@ -4946,7 +4943,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
       }
 
-      /* "mvacf_water.pyx":130
+      /* "vac.pyx":130
  * 
  * 			# Calculate I
  * 			I_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4978,7 +4975,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_11.memview = NULL;
       __pyx_t_11.data = NULL;
 
-      /* "mvacf_water.pyx":131
+      /* "vac.pyx":131
  * 			# Calculate I
  * 			I_mat = np.zeros((3,3), dtype=np.float32)
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -4990,7 +4987,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":132
+        /* "vac.pyx":132
  * 			I_mat = np.zeros((3,3), dtype=np.float32)
  * 			for j in range(n_per_mol):
  * 				I_mat[0,0] += m_arr[j]*(r_com_arr[j,1]*r_com_arr[j,1]+r_com_arr[j,2]*r_com_arr[j,2])             # <<<<<<<<<<<<<<
@@ -5084,7 +5081,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_68 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_69 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_59 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_60 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_61 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_62 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_63 * __pyx_v_r_com_arr.strides[1]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_64 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_65 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_66 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_67 * __pyx_v_r_com_arr.strides[1]) ))))));
 
-        /* "mvacf_water.pyx":133
+        /* "vac.pyx":133
  * 			for j in range(n_per_mol):
  * 				I_mat[0,0] += m_arr[j]*(r_com_arr[j,1]*r_com_arr[j,1]+r_com_arr[j,2]*r_com_arr[j,2])
  * 				I_mat[1,0] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,0])             # <<<<<<<<<<<<<<
@@ -5148,7 +5145,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_75 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_76 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_70 * __pyx_v_m_arr.strides[0]) ))) * ((-(*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_71 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_72 * __pyx_v_r_com_arr.strides[1]) )))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_73 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_74 * __pyx_v_r_com_arr.strides[1]) )))));
 
-        /* "mvacf_water.pyx":134
+        /* "vac.pyx":134
  * 				I_mat[0,0] += m_arr[j]*(r_com_arr[j,1]*r_com_arr[j,1]+r_com_arr[j,2]*r_com_arr[j,2])
  * 				I_mat[1,0] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,0])
  * 				I_mat[1,1] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,2]*r_com_arr[j,2])             # <<<<<<<<<<<<<<
@@ -5242,7 +5239,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_86 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_87 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_77 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_78 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_79 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_80 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_81 * __pyx_v_r_com_arr.strides[1]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_82 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_83 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_84 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_85 * __pyx_v_r_com_arr.strides[1]) ))))));
 
-        /* "mvacf_water.pyx":135
+        /* "vac.pyx":135
  * 				I_mat[1,0] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,0])
  * 				I_mat[1,1] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,2]*r_com_arr[j,2])
  * 				I_mat[2,0] += m_arr[j]*(-r_com_arr[j,0]*r_com_arr[j,2])             # <<<<<<<<<<<<<<
@@ -5306,7 +5303,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_93 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_94 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_88 * __pyx_v_m_arr.strides[0]) ))) * ((-(*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_89 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_90 * __pyx_v_r_com_arr.strides[1]) )))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_91 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_92 * __pyx_v_r_com_arr.strides[1]) )))));
 
-        /* "mvacf_water.pyx":136
+        /* "vac.pyx":136
  * 				I_mat[1,1] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,2]*r_com_arr[j,2])
  * 				I_mat[2,0] += m_arr[j]*(-r_com_arr[j,0]*r_com_arr[j,2])
  * 				I_mat[2,1] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,2])             # <<<<<<<<<<<<<<
@@ -5370,7 +5367,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_100 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_101 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_95 * __pyx_v_m_arr.strides[0]) ))) * ((-(*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_96 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_97 * __pyx_v_r_com_arr.strides[1]) )))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_98 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_99 * __pyx_v_r_com_arr.strides[1]) )))));
 
-        /* "mvacf_water.pyx":137
+        /* "vac.pyx":137
  * 				I_mat[2,0] += m_arr[j]*(-r_com_arr[j,0]*r_com_arr[j,2])
  * 				I_mat[2,1] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,2])
  * 				I_mat[2,2] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,1]*r_com_arr[j,1])             # <<<<<<<<<<<<<<
@@ -5465,7 +5462,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_111 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_112 * __pyx_v_I_mat.strides[1]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_102 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_103 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_104 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_105 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_106 * __pyx_v_r_com_arr.strides[1]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_107 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_108 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_109 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_110 * __pyx_v_r_com_arr.strides[1]) ))))));
       }
 
-      /* "mvacf_water.pyx":138
+      /* "vac.pyx":138
  * 				I_mat[2,1] += m_arr[j]*(-r_com_arr[j,1]*r_com_arr[j,2])
  * 				I_mat[2,2] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,1]*r_com_arr[j,1])
  * 			I_mat[0,1] = I_mat[1,0]             # <<<<<<<<<<<<<<
@@ -5504,7 +5501,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_115 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_116 * __pyx_v_I_mat.strides[1]) )) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_113 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_114 * __pyx_v_I_mat.strides[1]) )));
 
-      /* "mvacf_water.pyx":139
+      /* "vac.pyx":139
  * 				I_mat[2,2] += m_arr[j]*(r_com_arr[j,0]*r_com_arr[j,0]+r_com_arr[j,1]*r_com_arr[j,1])
  * 			I_mat[0,1] = I_mat[1,0]
  * 			I_mat[0,2] = I_mat[2,0]             # <<<<<<<<<<<<<<
@@ -5543,7 +5540,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_119 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_120 * __pyx_v_I_mat.strides[1]) )) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_117 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_118 * __pyx_v_I_mat.strides[1]) )));
 
-      /* "mvacf_water.pyx":140
+      /* "vac.pyx":140
  * 			I_mat[0,1] = I_mat[1,0]
  * 			I_mat[0,2] = I_mat[2,0]
  * 			I_mat[1,2] = I_mat[2,1]             # <<<<<<<<<<<<<<
@@ -5582,7 +5579,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_123 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_124 * __pyx_v_I_mat.strides[1]) )) = (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_mat.data + __pyx_t_121 * __pyx_v_I_mat.strides[0]) ) + __pyx_t_122 * __pyx_v_I_mat.strides[1]) )));
 
-      /* "mvacf_water.pyx":141
+      /* "vac.pyx":141
  * 			I_mat[0,2] = I_mat[2,0]
  * 			I_mat[1,2] = I_mat[2,1]
  * 			I_inv_mat = np.linalg.inv(I_mat)             # <<<<<<<<<<<<<<
@@ -5622,7 +5619,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_11.memview = NULL;
       __pyx_t_11.data = NULL;
 
-      /* "mvacf_water.pyx":144
+      /* "vac.pyx":144
  * 
  * 			# Calculate ww : L = m(r x v) = Iw
  * 			L_com_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -5654,7 +5651,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_125.memview = NULL;
       __pyx_t_125.data = NULL;
 
-      /* "mvacf_water.pyx":145
+      /* "vac.pyx":145
  * 			# Calculate ww : L = m(r x v) = Iw
  * 			L_com_arr = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -5666,7 +5663,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":146
+        /* "vac.pyx":146
  * 			L_com_arr = np.zeros(3, dtype=np.float32)
  * 			for j in range(n_per_mol):
  * 				L_com_arr[0] += m_arr[j]*(r_com_arr[j,1]*v_com_arr[j,2] - r_com_arr[j,2]*v_com_arr[j,1])             # <<<<<<<<<<<<<<
@@ -5755,7 +5752,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_135 * __pyx_v_L_com_arr.strides[0]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_126 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_127 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_128 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_129 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_130 * __pyx_v_v_com_arr.strides[1]) )))) - ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_131 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_132 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_133 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_134 * __pyx_v_v_com_arr.strides[1]) ))))));
 
-        /* "mvacf_water.pyx":147
+        /* "vac.pyx":147
  * 			for j in range(n_per_mol):
  * 				L_com_arr[0] += m_arr[j]*(r_com_arr[j,1]*v_com_arr[j,2] - r_com_arr[j,2]*v_com_arr[j,1])
  * 				L_com_arr[1] += m_arr[j]*(r_com_arr[j,2]*v_com_arr[j,0] - r_com_arr[j,0]*v_com_arr[j,2])             # <<<<<<<<<<<<<<
@@ -5844,7 +5841,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_145 * __pyx_v_L_com_arr.strides[0]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_136 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_137 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_138 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_139 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_140 * __pyx_v_v_com_arr.strides[1]) )))) - ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_141 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_142 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_143 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_144 * __pyx_v_v_com_arr.strides[1]) ))))));
 
-        /* "mvacf_water.pyx":148
+        /* "vac.pyx":148
  * 				L_com_arr[0] += m_arr[j]*(r_com_arr[j,1]*v_com_arr[j,2] - r_com_arr[j,2]*v_com_arr[j,1])
  * 				L_com_arr[1] += m_arr[j]*(r_com_arr[j,2]*v_com_arr[j,0] - r_com_arr[j,0]*v_com_arr[j,2])
  * 				L_com_arr[2] += m_arr[j]*(r_com_arr[j,0]*v_com_arr[j,1] - r_com_arr[j,1]*v_com_arr[j,0])             # <<<<<<<<<<<<<<
@@ -5934,7 +5931,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         *((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_155 * __pyx_v_L_com_arr.strides[0]) )) += ((*((float *) ( /* dim=0 */ (__pyx_v_m_arr.data + __pyx_t_146 * __pyx_v_m_arr.strides[0]) ))) * (((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_147 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_148 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_149 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_150 * __pyx_v_v_com_arr.strides[1]) )))) - ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_151 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_152 * __pyx_v_r_com_arr.strides[1]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_com_arr.data + __pyx_t_153 * __pyx_v_v_com_arr.strides[0]) ) + __pyx_t_154 * __pyx_v_v_com_arr.strides[1]) ))))));
       }
 
-      /* "mvacf_water.pyx":151
+      /* "vac.pyx":151
  * 
  * 			# Calculate v_rot
  * 			w_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -5966,7 +5963,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_125.memview = NULL;
       __pyx_t_125.data = NULL;
 
-      /* "mvacf_water.pyx":152
+      /* "vac.pyx":152
  * 			# Calculate v_rot
  * 			w_arr = np.zeros(3, dtype=np.float32)
  * 			v_rot_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -5998,7 +5995,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       __pyx_t_125.memview = NULL;
       __pyx_t_125.data = NULL;
 
-      /* "mvacf_water.pyx":154
+      /* "vac.pyx":154
  * 			v_rot_arr = np.zeros(3, dtype=np.float32)
  * 
  * 			w_arr[0] = I_inv_mat[0,0]*L_com_arr[0] + I_inv_mat[0,1]*L_com_arr[1] + I_inv_mat[0,2]*L_com_arr[2]             # <<<<<<<<<<<<<<
@@ -6092,7 +6089,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_165 * __pyx_v_w_arr.strides[0]) )) = ((((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_156 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_157 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_158 * __pyx_v_L_com_arr.strides[0]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_159 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_160 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_161 * __pyx_v_L_com_arr.strides[0]) ))))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_162 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_163 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_164 * __pyx_v_L_com_arr.strides[0]) )))));
 
-      /* "mvacf_water.pyx":155
+      /* "vac.pyx":155
  * 
  * 			w_arr[0] = I_inv_mat[0,0]*L_com_arr[0] + I_inv_mat[0,1]*L_com_arr[1] + I_inv_mat[0,2]*L_com_arr[2]
  * 			w_arr[1] = I_inv_mat[1,0]*L_com_arr[0] + I_inv_mat[1,1]*L_com_arr[1] + I_inv_mat[1,2]*L_com_arr[2]             # <<<<<<<<<<<<<<
@@ -6186,7 +6183,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_175 * __pyx_v_w_arr.strides[0]) )) = ((((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_166 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_167 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_168 * __pyx_v_L_com_arr.strides[0]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_169 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_170 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_171 * __pyx_v_L_com_arr.strides[0]) ))))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_172 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_173 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_174 * __pyx_v_L_com_arr.strides[0]) )))));
 
-      /* "mvacf_water.pyx":156
+      /* "vac.pyx":156
  * 			w_arr[0] = I_inv_mat[0,0]*L_com_arr[0] + I_inv_mat[0,1]*L_com_arr[1] + I_inv_mat[0,2]*L_com_arr[2]
  * 			w_arr[1] = I_inv_mat[1,0]*L_com_arr[0] + I_inv_mat[1,1]*L_com_arr[1] + I_inv_mat[1,2]*L_com_arr[2]
  * 			w_arr[2] = I_inv_mat[2,0]*L_com_arr[0] + I_inv_mat[2,1]*L_com_arr[1] + I_inv_mat[2,2]*L_com_arr[2]             # <<<<<<<<<<<<<<
@@ -6280,7 +6277,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_185 * __pyx_v_w_arr.strides[0]) )) = ((((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_176 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_177 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_178 * __pyx_v_L_com_arr.strides[0]) )))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_179 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_180 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_181 * __pyx_v_L_com_arr.strides[0]) ))))) + ((*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_I_inv_mat.data + __pyx_t_182 * __pyx_v_I_inv_mat.strides[0]) ) + __pyx_t_183 * __pyx_v_I_inv_mat.strides[1]) ))) * (*((float *) ( /* dim=0 */ (__pyx_v_L_com_arr.data + __pyx_t_184 * __pyx_v_L_com_arr.strides[0]) )))));
 
-      /* "mvacf_water.pyx":158
+      /* "vac.pyx":158
  * 			w_arr[2] = I_inv_mat[2,0]*L_com_arr[0] + I_inv_mat[2,1]*L_com_arr[1] + I_inv_mat[2,2]*L_com_arr[2]
  * 
  * 			for j in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -6292,7 +6289,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_j = __pyx_t_18;
 
-        /* "mvacf_water.pyx":159
+        /* "vac.pyx":159
  * 
  * 			for j in range(n_per_mol):
  * 				v_rot_mat[l,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]             # <<<<<<<<<<<<<<
@@ -6376,7 +6373,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_rot_mat.data + __pyx_t_192 * __pyx_v_v_rot_mat.strides[0]) ) + __pyx_t_193 * __pyx_v_v_rot_mat.strides[1]) ) + __pyx_t_194 * __pyx_v_v_rot_mat.strides[2]) ) + __pyx_t_195 * __pyx_v_v_rot_mat.strides[3]) )) += (((*((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_186 * __pyx_v_w_arr.strides[0]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_187 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_188 * __pyx_v_r_com_arr.strides[1]) )))) - ((*((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_189 * __pyx_v_w_arr.strides[0]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_190 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_191 * __pyx_v_r_com_arr.strides[1]) )))));
 
-        /* "mvacf_water.pyx":160
+        /* "vac.pyx":160
  * 			for j in range(n_per_mol):
  * 				v_rot_mat[l,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
  * 				v_rot_mat[l,i,j,1] += w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]             # <<<<<<<<<<<<<<
@@ -6460,7 +6457,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=3 */ (( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_rot_mat.data + __pyx_t_202 * __pyx_v_v_rot_mat.strides[0]) ) + __pyx_t_203 * __pyx_v_v_rot_mat.strides[1]) ) + __pyx_t_204 * __pyx_v_v_rot_mat.strides[2]) ) + __pyx_t_205 * __pyx_v_v_rot_mat.strides[3]) )) += (((*((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_196 * __pyx_v_w_arr.strides[0]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_197 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_198 * __pyx_v_r_com_arr.strides[1]) )))) - ((*((float *) ( /* dim=0 */ (__pyx_v_w_arr.data + __pyx_t_199 * __pyx_v_w_arr.strides[0]) ))) * (*((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_r_com_arr.data + __pyx_t_200 * __pyx_v_r_com_arr.strides[0]) ) + __pyx_t_201 * __pyx_v_r_com_arr.strides[1]) )))));
 
-        /* "mvacf_water.pyx":161
+        /* "vac.pyx":161
  * 				v_rot_mat[l,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
  * 				v_rot_mat[l,i,j,1] += w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
  * 				v_rot_mat[l,i,j,2] += w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]             # <<<<<<<<<<<<<<
@@ -6546,7 +6543,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
     }
 
-    /* "mvacf_water.pyx":93
+    /* "vac.pyx":93
  * 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l]
  * 
  * 	for l in tqdm(range(n_frames)):             # <<<<<<<<<<<<<<
@@ -6556,7 +6553,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "mvacf_water.pyx":165
+  /* "vac.pyx":165
  * 
  * 
  * 	cdef float[:] mvacf_trn_arr = np.zeros(int(t/dt), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6599,7 +6596,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_t_125.memview = NULL;
   __pyx_t_125.data = NULL;
 
-  /* "mvacf_water.pyx":166
+  /* "vac.pyx":166
  * 
  * 	cdef float[:] mvacf_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
  * 	cdef float[:] mvacf_rot_arr = np.zeros(int(t/dt), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6642,7 +6639,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_t_125.memview = NULL;
   __pyx_t_125.data = NULL;
 
-  /* "mvacf_water.pyx":168
+  /* "vac.pyx":168
  * 	cdef float[:] mvacf_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
  * 
  * 	cdef float[:,:] vdot_trn_arr = np.zeros((len(mvacf_trn_arr),n_h2os), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6692,7 +6689,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":169
+  /* "vac.pyx":169
  * 
  * 	cdef float[:,:] vdot_trn_arr = np.zeros((len(mvacf_trn_arr),n_h2os), dtype=np.float32)
  * 	cdef float[:,:] vdot_rot_arr = np.zeros((len(mvacf_trn_arr),n_h2os), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6742,7 +6739,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "mvacf_water.pyx":172
+  /* "vac.pyx":172
  * 
  * 	cdef int len_mvacf_trn_arr
  * 	len_mvacf_trn_arr = len(mvacf_trn_arr)             # <<<<<<<<<<<<<<
@@ -6752,7 +6749,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_t_216 = __Pyx_MemoryView_Len(__pyx_v_mvacf_trn_arr); 
   __pyx_v_len_mvacf_trn_arr = __pyx_t_216;
 
-  /* "mvacf_water.pyx":174
+  /* "vac.pyx":174
  * 	len_mvacf_trn_arr = len(mvacf_trn_arr)
  * 
  * 	for i in tqdm(range(n_frames-len_mvacf_trn_arr)):             # <<<<<<<<<<<<<<
@@ -6826,7 +6823,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     __Pyx_DECREF(__pyx_t_46); __pyx_t_46 = 0;
     __pyx_v_i = __pyx_t_12;
 
-    /* "mvacf_water.pyx":175
+    /* "vac.pyx":175
  * 
  * 	for i in tqdm(range(n_frames-len_mvacf_trn_arr)):
  * 		for j in range(len_mvacf_trn_arr):             # <<<<<<<<<<<<<<
@@ -6838,7 +6835,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
       __pyx_v_j = __pyx_t_15;
 
-      /* "mvacf_water.pyx":176
+      /* "vac.pyx":176
  * 	for i in tqdm(range(n_frames-len_mvacf_trn_arr)):
  * 		for j in range(len_mvacf_trn_arr):
  * 			for k in range(n_h2os):             # <<<<<<<<<<<<<<
@@ -6850,7 +6847,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_k = __pyx_t_18;
 
-        /* "mvacf_water.pyx":177
+        /* "vac.pyx":177
  * 		for j in range(len_mvacf_trn_arr):
  * 			for k in range(n_h2os):
  * 				vdot_trn_arr[j,k] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])             # <<<<<<<<<<<<<<
@@ -6994,7 +6991,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         }
         *((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_vdot_trn_arr.data + __pyx_t_235 * __pyx_v_vdot_trn_arr.strides[0]) ) + __pyx_t_236 * __pyx_v_vdot_trn_arr.strides[1]) )) += (__pyx_v_M * ((((*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_217 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_218 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_219 * __pyx_v_v_trn_mat.strides[2]) ))) * (*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_220 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_221 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_222 * __pyx_v_v_trn_mat.strides[2]) )))) + ((*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_223 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_224 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_225 * __pyx_v_v_trn_mat.strides[2]) ))) * (*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_226 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_227 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_228 * __pyx_v_v_trn_mat.strides[2]) ))))) + ((*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_229 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_230 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_231 * __pyx_v_v_trn_mat.strides[2]) ))) * (*((float *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_trn_mat.data + __pyx_t_232 * __pyx_v_v_trn_mat.strides[0]) ) + __pyx_t_233 * __pyx_v_v_trn_mat.strides[1]) ) + __pyx_t_234 * __pyx_v_v_trn_mat.strides[2]) ))))));
 
-        /* "mvacf_water.pyx":179
+        /* "vac.pyx":179
  * 				vdot_trn_arr[j,k] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])
  * 
  * 				for l in range(n_per_mol):             # <<<<<<<<<<<<<<
@@ -7006,7 +7003,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
         for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_20; __pyx_t_23+=1) {
           __pyx_v_l = __pyx_t_23;
 
-          /* "mvacf_water.pyx":180
+          /* "vac.pyx":180
  * 
  * 				for l in range(n_per_mol):
  * 					vdot_rot_arr[j,k] += m_arr[l]*(v_rot_mat[i,k,l,0]*v_rot_mat[i+j,k,l,0]+v_rot_mat[i,k,l,1]*v_rot_mat[i+j,k,l,1]+v_rot_mat[i,k,l,2]*v_rot_mat[i+j,k,l,2])             # <<<<<<<<<<<<<<
@@ -7193,7 +7190,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
     }
 
-    /* "mvacf_water.pyx":174
+    /* "vac.pyx":174
  * 	len_mvacf_trn_arr = len(mvacf_trn_arr)
  * 
  * 	for i in tqdm(range(n_frames-len_mvacf_trn_arr)):             # <<<<<<<<<<<<<<
@@ -7203,7 +7200,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "mvacf_water.pyx":183
+  /* "vac.pyx":183
  * 
  * 
  * 	for j in range (len_mvacf_trn_arr):             # <<<<<<<<<<<<<<
@@ -7215,7 +7212,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_j = __pyx_t_15;
 
-    /* "mvacf_water.pyx":184
+    /* "vac.pyx":184
  * 
  * 	for j in range (len_mvacf_trn_arr):
  * 		for k in range (n_h2os):             # <<<<<<<<<<<<<<
@@ -7227,7 +7224,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_k = __pyx_t_18;
 
-      /* "mvacf_water.pyx":186
+      /* "vac.pyx":186
  * 		for k in range (n_h2os):
  * 
  * 			mvacf_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len(mvacf_trn_arr))             # <<<<<<<<<<<<<<
@@ -7268,7 +7265,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
       }
       *((float *) ( /* dim=0 */ (__pyx_v_mvacf_trn_arr.data + __pyx_t_267 * __pyx_v_mvacf_trn_arr.strides[0]) )) += (__pyx_t_5 / __pyx_t_4);
 
-      /* "mvacf_water.pyx":187
+      /* "vac.pyx":187
  * 
  * 			mvacf_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len(mvacf_trn_arr))
  * 			mvacf_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len(mvacf_trn_arr))             # <<<<<<<<<<<<<<
@@ -7311,7 +7308,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     }
   }
 
-  /* "mvacf_water.pyx":189
+  /* "vac.pyx":189
  * 			mvacf_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len(mvacf_trn_arr))
  * 
  * 	oarr = []             # <<<<<<<<<<<<<<
@@ -7323,7 +7320,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_v_oarr = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "mvacf_water.pyx":190
+  /* "vac.pyx":190
  * 
  * 	oarr = []
  * 	for i in range (len_mvacf_trn_arr):             # <<<<<<<<<<<<<<
@@ -7335,7 +7332,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "mvacf_water.pyx":191
+    /* "vac.pyx":191
  * 	oarr = []
  * 	for i in range (len_mvacf_trn_arr):
  * 		oarr.append([dt*i, mvacf_trn_arr[i],mvacf_rot_arr[i]])             # <<<<<<<<<<<<<<
@@ -7383,7 +7380,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "mvacf_water.pyx":195
+  /* "vac.pyx":195
  * 
  * 
  * 	np.savetxt(ofilename, oarr, fmt='%10f')             # <<<<<<<<<<<<<<
@@ -7413,7 +7410,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __Pyx_DECREF(__pyx_t_46); __pyx_t_46 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "mvacf_water.pyx":197
+  /* "vac.pyx":197
  * 	np.savetxt(ofilename, oarr, fmt='%10f')
  * 
  * 	end = time.time() - start             # <<<<<<<<<<<<<<
@@ -7446,7 +7443,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __pyx_v_end = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "mvacf_water.pyx":199
+  /* "vac.pyx":199
  * 	end = time.time() - start
  * 
  * 	print 'total time is ' + str(end)             # <<<<<<<<<<<<<<
@@ -7461,7 +7458,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   if (__Pyx_PrintOne(0, __pyx_t_6) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "mvacf_water.pyx":15
+  /* "vac.pyx":15
  * import matplotlib.pyplot as plt
  * 
  * cpdef main():             # <<<<<<<<<<<<<<
@@ -7484,7 +7481,7 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __Pyx_XDECREF(__pyx_t_46);
   __PYX_XDEC_MEMVIEW(&__pyx_t_125, 1);
-  __Pyx_AddTraceback("mvacf_water.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("vac.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_start);
@@ -7524,25 +7521,25 @@ if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_v_com, __pyx_t_8, 1, 1, 0) <
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11mvacf_water_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11mvacf_water_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3vac_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_3vac_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("main (wrapper)", 0);
-  __pyx_r = __pyx_pf_11mvacf_water_main(__pyx_self);
+  __pyx_r = __pyx_pf_3vac_main(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11mvacf_water_main(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3vac_main(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("main", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11mvacf_water_main(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3vac_main(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7551,7 +7548,7 @@ static PyObject *__pyx_pf_11mvacf_water_main(CYTHON_UNUSED PyObject *__pyx_self)
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mvacf_water.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("vac.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -22873,7 +22870,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mvacf_water.array", /*tp_name*/
+  "vac.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -22984,7 +22981,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mvacf_water.Enum", /*tp_name*/
+  "vac.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -23237,7 +23234,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mvacf_water.memoryview", /*tp_name*/
+  "vac.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -23367,7 +23364,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mvacf_water._memoryviewslice", /*tp_name*/
+  "vac._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -23435,24 +23432,24 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"main", (PyCFunction)__pyx_pw_11mvacf_water_1main, METH_NOARGS, 0},
+  {"main", (PyCFunction)__pyx_pw_3vac_1main, METH_NOARGS, 0},
   {0, 0, 0, 0}
 };
 
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_mvacf_water(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_vac(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_mvacf_water},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_vac},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "mvacf_water",
+    "vac",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -23634,7 +23631,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "mvacf_water.pyx":29
+  /* "vac.pyx":29
  * 	start = time.time()
  * 
  * 	u = md.Universe("2pt.tpr", "2pt.trr")             # <<<<<<<<<<<<<<
@@ -23645,7 +23642,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "mvacf_water.pyx":60
+  /* "vac.pyx":60
  * 	cdef float[:,:] v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
  * 
  * 	cdef float[:] w_arr = np.zeros(3, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -23656,7 +23653,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "mvacf_water.pyx":68
+  /* "vac.pyx":68
  * 
  * 
  * 	cdef float[:,:] I_mat = np.zeros((3,3), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -24055,12 +24052,8 @@ static int __Pyx_modinit_function_export_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_export_code", 0);
   /*--- Function export code ---*/
-  if (__Pyx_ExportFunction("main", (void (*)(void))__pyx_f_11mvacf_water_main, "PyObject *(int __pyx_skip_dispatch)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
-  __pyx_L1_error:;
-  __Pyx_RefNannyFinishContext();
-  return -1;
 }
 
 static int __Pyx_modinit_type_init_code(void) {
@@ -24195,11 +24188,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initmvacf_water(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initmvacf_water(void)
+__Pyx_PyMODINIT_FUNC initvac(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initvac(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_mvacf_water(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_mvacf_water(void)
+__Pyx_PyMODINIT_FUNC PyInit_vac(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_vac(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -24266,7 +24259,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_mvacf_water(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_vac(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -24277,7 +24270,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_mvacf_water(PyObject *__pyx_pyinit
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'mvacf_water' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'vac' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -24292,7 +24285,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_mvacf_water(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_vac(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -24331,7 +24324,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("mvacf_water", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("vac", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -24349,14 +24342,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_mvacf_water) {
+  if (__pyx_module_is_main_vac) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "mvacf_water")) {
-      if (unlikely(PyDict_SetItemString(modules, "mvacf_water", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "vac")) {
+      if (unlikely(PyDict_SetItemString(modules, "vac", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -24367,7 +24360,7 @@ if (!__Pyx_RefNanny) {
   /*--- Global type/function init code ---*/
   (void)__Pyx_modinit_global_init_code();
   (void)__Pyx_modinit_variable_export_code();
-  if (unlikely(__Pyx_modinit_function_export_code() != 0)) goto __pyx_L1_error;
+  (void)__Pyx_modinit_function_export_code();
   if (unlikely(__Pyx_modinit_type_init_code() != 0)) goto __pyx_L1_error;
   if (unlikely(__Pyx_modinit_type_import_code() != 0)) goto __pyx_L1_error;
   (void)__Pyx_modinit_variable_import_code();
@@ -24377,7 +24370,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "mvacf_water.pyx":3
+  /* "vac.pyx":3
  * import cython
  * cimport cython
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -24389,7 +24382,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":4
+  /* "vac.pyx":4
  * cimport cython
  * import numpy as np
  * import numpy.linalg             # <<<<<<<<<<<<<<
@@ -24401,7 +24394,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_numpy, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":6
+  /* "vac.pyx":6
  * import numpy.linalg
  * cimport numpy as np
  * import sys             # <<<<<<<<<<<<<<
@@ -24413,7 +24406,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":7
+  /* "vac.pyx":7
  * cimport numpy as np
  * import sys
  * import math             # <<<<<<<<<<<<<<
@@ -24425,7 +24418,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_math, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":8
+  /* "vac.pyx":8
  * import sys
  * import math
  * import time             # <<<<<<<<<<<<<<
@@ -24437,7 +24430,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":10
+  /* "vac.pyx":10
  * import time
  * 
  * from tqdm import tqdm             # <<<<<<<<<<<<<<
@@ -24458,7 +24451,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mvacf_water.pyx":12
+  /* "vac.pyx":12
  * from tqdm import tqdm
  * 
  * import MDAnalysis as md             # <<<<<<<<<<<<<<
@@ -24470,7 +24463,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_md, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mvacf_water.pyx":13
+  /* "vac.pyx":13
  * 
  * import MDAnalysis as md
  * import matplotlib.pyplot as plt             # <<<<<<<<<<<<<<
@@ -24488,7 +24481,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_plt, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mvacf_water.pyx":1
+  /* "vac.pyx":1
  * import cython             # <<<<<<<<<<<<<<
  * cimport cython
  * import numpy as np
@@ -24659,11 +24652,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init mvacf_water", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init vac", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init mvacf_water");
+    PyErr_SetString(PyExc_ImportError, "init vac");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -29070,43 +29063,6 @@ __pyx_fail:
         return PyErr_WarnEx(NULL, message, 1);
     }
     return 0;
-}
-
-/* FunctionExport */
-  static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig) {
-    PyObject *d = 0;
-    PyObject *cobj = 0;
-    union {
-        void (*fp)(void);
-        void *p;
-    } tmp;
-    d = PyObject_GetAttrString(__pyx_m, (char *)"__pyx_capi__");
-    if (!d) {
-        PyErr_Clear();
-        d = PyDict_New();
-        if (!d)
-            goto bad;
-        Py_INCREF(d);
-        if (PyModule_AddObject(__pyx_m, (char *)"__pyx_capi__", d) < 0)
-            goto bad;
-    }
-    tmp.fp = f;
-#if PY_VERSION_HEX >= 0x02070000
-    cobj = PyCapsule_New(tmp.p, sig, 0);
-#else
-    cobj = PyCObject_FromVoidPtrAndDesc(tmp.p, (void *)sig, 0);
-#endif
-    if (!cobj)
-        goto bad;
-    if (PyDict_SetItemString(d, name, cobj) < 0)
-        goto bad;
-    Py_DECREF(cobj);
-    Py_DECREF(d);
-    return 0;
-bad:
-    Py_XDECREF(cobj);
-    Py_XDECREF(d);
-    return -1;
 }
 
 /* InitStrings */

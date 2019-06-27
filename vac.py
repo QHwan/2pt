@@ -6,7 +6,7 @@ import numpy as np
 import sys
 import math
 import time
-from mvacf_water import main
+from vac import main
 import MDAnalysis as md
 
 start = time.time()

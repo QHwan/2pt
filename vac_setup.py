@@ -3,7 +3,7 @@ from distutils.core import setup
 from Cython.Build import cythonize
 
 setup(
-	name = "mvacf_water",
+	name = "vac",
 	include_dirs = [np.get_include()],
-	ext_modules=cythonize('mvacf_water.pyx')
+	ext_modules=cythonize('vac.pyx')
 	)
