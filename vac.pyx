@@ -6,6 +6,7 @@ cimport numpy as np
 import sys
 import math
 import time
+import sys
 
 from tqdm import tqdm
 
@@ -26,7 +27,7 @@ cpdef main():
 
 	start = time.time()
 
-	u = md.Universe("2pt.tpr", "2pt.trr")
+	u = md.Universe(sys.argv[1], sys.argv[2])
 
 	h2o = u.select_atoms("name OW or name HW1 or name HW2")
 	ofilename = "vac.xvg"
