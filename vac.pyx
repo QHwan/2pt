@@ -2,7 +2,7 @@ import cython
 cimport cython
 import numpy as np
 import numpy.linalg
-cimport numpy as np
+#cimport numpy as np
 import sys
 import math
 import time
@@ -60,21 +60,19 @@ cpdef main():
 
 	cdef float[:] w_arr = np.zeros(3, dtype=np.float32)
 
-	cdef float[:] v_rot_arr = np.zeros(3, dtype=np.float32)
-
 	cdef float[:] r_com = np.zeros(3, dtype=np.float32)
 	cdef float[:] v_com = np.zeros(3, dtype=np.float32)
 
-
 	cdef float[:,:] I_mat = np.zeros((3,3), dtype=np.float32)
 	cdef float[:,:] I_inv_mat = np.zeros((3,3), dtype=np.float32)
-	cdef float[:,:,:] Ip_mat = np.zeros((n_frames,n_h2os,3), dtype=np.float32)
-	cdef float[:,:] R_mat = np.zeros((3,3), dtype=np.float32)
-	cdef float[:,:] t_mat = np.zeros((3,3), dtype=np.float32)
 
 	cdef float[:] L_com_arr = np.zeros(3, dtype=np.float32)
 
 	# Manually setup
+	w_arr = np.zeros(3, dtype=np.float32)
+
+	r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
+	v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
 
 	## Filling r_matrix
 	cdef float[:,:] buf_mat = np.zeros((n_h2os*n_per_mol, 3), dtype=np.float32)
@@ -96,8 +94,6 @@ cpdef main():
 		r_arr = r_mat[l]
 		v_arr = v_mat[l]
 		for i in range (n_h2os):
-			#print i
-
 			# Calculate COM of molecule
 			r_com = np.zeros(3, dtype=np.float32)
 			for j in range(n_per_mol):
@@ -120,8 +116,6 @@ cpdef main():
 
 
 			# Calculate relative position and velocity vector of molecule with respect to the COM
-			r_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
-			v_com_arr = np.zeros((n_per_mol,3), dtype=np.float32)
 			for j in range(n_per_mol):
 				for k in range(3):
 					r_com_arr[j,k] = r_arr[i,j,k] - r_com[k]
@@ -149,31 +143,30 @@ cpdef main():
 				L_com_arr[2] += m_arr[j]*(r_com_arr[j,0]*v_com_arr[j,1] - r_com_arr[j,1]*v_com_arr[j,0])
 
 			# Calculate v_rot
-			w_arr = np.zeros(3, dtype=np.float32)
-			v_rot_arr = np.zeros(3, dtype=np.float32)
-
 			w_arr[0] = I_inv_mat[0,0]*L_com_arr[0] + I_inv_mat[0,1]*L_com_arr[1] + I_inv_mat[0,2]*L_com_arr[2]
 			w_arr[1] = I_inv_mat[1,0]*L_com_arr[0] + I_inv_mat[1,1]*L_com_arr[1] + I_inv_mat[1,2]*L_com_arr[2]
 			w_arr[2] = I_inv_mat[2,0]*L_com_arr[0] + I_inv_mat[2,1]*L_com_arr[1] + I_inv_mat[2,2]*L_com_arr[2]
 
 			for j in range(n_per_mol):
-				v_rot_mat[l,i,j,0] += w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
-				v_rot_mat[l,i,j,1] += w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
-				v_rot_mat[l,i,j,2] += w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]
+				v_rot_mat[l,i,j,0] = w_arr[1]*r_com_arr[j,2]-w_arr[2]*r_com_arr[j,1]
+				v_rot_mat[l,i,j,1] = w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
+				v_rot_mat[l,i,j,2] = w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]
 
 
+	cdef int len_vac
+	len_vac = len(vac_trn_arr)
 
-	cdef float[:] mvacf_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
-	cdef float[:] mvacf_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
+	cdef float[:] vac_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
+	cdef float[:] vac_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
 
-	cdef float[:,:] vdot_trn_arr = np.zeros((len(mvacf_trn_arr),n_h2os), dtype=np.float32)
-	cdef float[:,:] vdot_rot_arr = np.zeros((len(mvacf_trn_arr),n_h2os), dtype=np.float32)
+	cdef float[:,:] vdot_trn_arr = np.zeros((len_vac,n_h2os), dtype=np.float32)
+	cdef float[:,:] vdot_rot_arr = np.zeros((len_vac,n_h2os), dtype=np.float32)
 
-	cdef int len_mvacf_trn_arr
-	len_mvacf_trn_arr = len(mvacf_trn_arr)
+	cdef int len_vac
+	len_vac = len(vac_trn_arr)
 
-	for i in tqdm(range(n_frames-len_mvacf_trn_arr)):
-		for j in range(len_mvacf_trn_arr):
+	for i in tqdm(range(n_frames-len_vac)):
+		for j in range(len_vac):
 			for k in range(n_h2os):
 				vdot_trn_arr[j,k] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])
 
@@ -181,15 +174,14 @@ cpdef main():
 					vdot_rot_arr[j,k] += m_arr[l]*(v_rot_mat[i,k,l,0]*v_rot_mat[i+j,k,l,0]+v_rot_mat[i,k,l,1]*v_rot_mat[i+j,k,l,1]+v_rot_mat[i,k,l,2]*v_rot_mat[i+j,k,l,2])
 
 
-	for j in range (len_mvacf_trn_arr):
+	for j in range (len_vac):
 		for k in range (n_h2os):
-
-			mvacf_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len(mvacf_trn_arr))
-			mvacf_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len(mvacf_trn_arr))
+			vac_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len_vac)
+			vac_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len_vac)
 
 	oarr = []
-	for i in range (len_mvacf_trn_arr):
-		oarr.append([dt*i, mvacf_trn_arr[i],mvacf_rot_arr[i]])
+	for i in range (len_vac):
+		oarr.append([dt*i, vac_trn_arr[i],vac_rot_arr[i]])
 
 
 
