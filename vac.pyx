@@ -13,7 +13,7 @@ from tqdm import tqdm
 import MDAnalysis as md
 import matplotlib.pyplot as plt
 
-cpdef main():
+cpdef vac(universe, selection):
 
 	cdef int i, j, k, l, n_h2os, n_frames, n_per_mol
 	cdef int frame
@@ -27,13 +27,13 @@ cpdef main():
 
 	start = time.time()
 
-	u = md.Universe(sys.argv[1], sys.argv[2])
+	u = universe
+	sel = selection
 
-	h2o = u.select_atoms("name OW or name HW1 or name HW2")
-	ofilename = "vac.xvg"
+	h2o = u.select_atoms(sel)
 	n_frames = len(u.trajectory)
-	n_h2os = len(u.select_atoms("name OW"))
-	t = 5
+	n_h2os = 1
+	t = u.trajectory[-1].time * 0.5
 	dt = u.trajectory[1].time - u.trajectory[0].time
 
 	m_o = 15.99998
@@ -89,7 +89,8 @@ cpdef main():
 				for l in range (3):
 					v_mat[i,j,k,l] = buf_mat[n_per_mol*j+k, l] * 0.1
 
-	for l in tqdm(range(n_frames)):
+	#for l in tqdm(range(n_frames)):
+	for l in range(n_frames):
 		#Calculate molecule by molecule
 		r_arr = r_mat[l]
 		v_arr = v_mat[l]
@@ -152,20 +153,18 @@ cpdef main():
 				v_rot_mat[l,i,j,1] = w_arr[2]*r_com_arr[j,0]-w_arr[0]*r_com_arr[j,2]
 				v_rot_mat[l,i,j,2] = w_arr[0]*r_com_arr[j,1]-w_arr[1]*r_com_arr[j,0]
 
+	cdef float[:] vac_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
+	cdef float[:] vac_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
 
 	cdef int len_vac
 	len_vac = len(vac_trn_arr)
-
-	cdef float[:] vac_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
-	cdef float[:] vac_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
 
 	cdef float[:,:] vdot_trn_arr = np.zeros((len_vac,n_h2os), dtype=np.float32)
 	cdef float[:,:] vdot_rot_arr = np.zeros((len_vac,n_h2os), dtype=np.float32)
 
-	cdef int len_vac
-	len_vac = len(vac_trn_arr)
 
-	for i in tqdm(range(n_frames-len_vac)):
+	#for i in tqdm(range(n_frames-len_vac)):
+	for i in range(n_frames-len_vac):
 		for j in range(len_vac):
 			for k in range(n_h2os):
 				vdot_trn_arr[j,k] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])
@@ -174,21 +173,13 @@ cpdef main():
 					vdot_rot_arr[j,k] += m_arr[l]*(v_rot_mat[i,k,l,0]*v_rot_mat[i+j,k,l,0]+v_rot_mat[i,k,l,1]*v_rot_mat[i+j,k,l,1]+v_rot_mat[i,k,l,2]*v_rot_mat[i+j,k,l,2])
 
 
-	for j in range (len_vac):
-		for k in range (n_h2os):
+	t_arr = [dt*i for i in range(len_vac)]
+	for j in range(len_vac):
+		for k in range(n_h2os):
 			vac_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len_vac)
 			vac_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len_vac)
 
-	oarr = []
-	for i in range (len_vac):
-		oarr.append([dt*i, vac_trn_arr[i],vac_rot_arr[i]])
+	return t_arr, vac_trn_arr, vac_rot_arr
 
-
-
-	np.savetxt(ofilename, oarr, fmt='%10f')
-
-	end = time.time() - start
-
-	print 'total time is ' + str(end)
 
 

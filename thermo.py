@@ -1,43 +1,19 @@
 import numpy as np
-import sys
 import math
 import scipy.optimize
 import MDAnalysis as md
 import matplotlib.pyplot as plt
 
-u = md.Universe("C:\\Development\data\md.tpr", "C:\\Development\data\md.trr")
+def entropy(u, sel, v_arr, s_trn_arr, s_rot_arr, T, V):
+	k = 1.380649*1e-23 # (J/ K)
+	N_avo = 6.02214*1e23
 
-k = 1.380649*1e-23 # (J/ K)
-T = 300.
-N_avo = 6.02214*1e23
+	m = np.sum(u.select_atoms(sel).masses) * 1e-3 / N_avo # (kg)
+	h = 6.62607*1e-34 # (Js)
 
-m = np.sum(u.select_atoms("name OW or name HW1 or name HW2").masses[0:3]) * 1e-3 / N_avo # (kg)
-h = 6.62607*1e-34 # (Js)
+	N = 1
 
-N = len(u.select_atoms("name OW"))
-V = u.dimensions[0]*u.dimensions[1]*u.dimensions[2] * 1e-30 # m3
-
-I_px, I_py, I_pz = 0.5926, 1.3334, 1.926
-
-V_arr = [V]
-E_arr = [0]
-
-o_arr = []
-S_tot_arr = []
-S_trn_arr = []
-S_rot_arr = []
-for i in range(len(V_arr)):
-	pt_mat = np.loadtxt("dos.xvg")
-	v_arr = pt_mat[:,0]
-	s_trn_arr = pt_mat[:,1]
-	s_rot_arr = pt_mat[:,2]
-
-	V = V_arr[i]
-	E = E_arr[i]
-
-	v_arr = v_arr[:300]
-	s_trn_arr = s_trn_arr[:300]
-	s_rot_arr = s_rot_arr[:300]
+	I_px, I_py, I_pz = 0.5926, 1.3334, 1.926
 
 	# Decompose s_arr -> s_s_arr and s_g_arr
 	s0_trn = s_trn_arr[0]
@@ -58,10 +34,10 @@ for i in range(len(V_arr)):
 	def func_rot(f):
 		y = 2*(delta_rot**-4.5)*(f**7.5) - 6*(delta_rot**-3)*(f**5) - (delta_rot**-1.5)*(f**3.5) + 6*(delta_rot**-1.5)*(f**2.5) + 2*f - 2
 		return y
- 
+
 	f_trn = scipy.optimize.brentq(func_trn,0,1)
 	f_rot = scipy.optimize.brentq(func_rot,0,1)
-	print("f_trn = {}, f_rot = {}".format(f_trn, f_rot))
+	#print("f_trn = {}, f_rot = {}".format(f_trn, f_rot))
 
 	y_trn = (f_trn**2.5)/(delta_trn**1.5)
 	z_trn = (1 + y_trn + y_trn**2 - y_trn**3)/((1 - y_trn)**3)
@@ -82,12 +58,8 @@ for i in range(len(V_arr)):
 	s_rot_gas_arr = s0_rot / (1 + (math.pi*s0_rot*v_arr/6/f_rot/N)**2)
 	s_rot_sol_arr = s_rot_arr - s_rot_gas_arr 
 
-
-
 	# Setting bhv
 	bhv_arr = 2.9979*1e10*v_arr*h/k/T
-
-	print(v_arr)
 
 	# Calculate Entropy
 	W_trn_sol_arr = np.zeros(len(v_arr))
@@ -117,18 +89,15 @@ for i in range(len(V_arr)):
 	S_trn_sol = np.trapz(np.multiply(s_trn_sol_arr, W_trn_sol_arr), v_arr) * k*N_avo/N
 	S_trn_gas = np.trapz(np.multiply(s_trn_gas_arr, W_trn_gas_arr), v_arr) * k*N_avo/N
 	S_trn = S_trn_sol + S_trn_gas
-	print("Translational entropy: solid {}, gas {}, total {}".format(S_trn_sol, S_trn_gas, S_trn))
-	print(np.trapz(np.multiply(s_trn_arr, W_trn_sol_arr), v_arr) * k*N_avo/N)
+	#print("Translational entropy: solid {}, gas {}, total {}".format(S_trn_sol, S_trn_gas, S_trn))
+	#print(np.trapz(np.multiply(s_trn_arr, W_trn_sol_arr), v_arr) * k*N_avo/N)
 
 	S_rot_sol = np.trapz(np.multiply(s_rot_sol_arr, W_rot_sol_arr), v_arr) * k*N_avo/N
 	S_rot_gas = np.trapz(np.multiply(s_rot_gas_arr, W_rot_gas_arr), v_arr) * k*N_avo/N
 	S_rot = S_rot_sol + S_rot_gas
-	print("Rotational entropy: solid {}, gas {}, total {}".format(S_rot_sol, S_rot_gas, S_rot))
-	print(np.trapz(np.multiply(s_rot_arr, W_trn_sol_arr), v_arr) * k*N_avo/N)
+	#print("Rotational entropy: solid {}, gas {}, total {}".format(S_rot_sol, S_rot_gas, S_rot))
+	#print(np.trapz(np.multiply(s_rot_arr, W_trn_sol_arr), v_arr) * k*N_avo/N)
 
-
-	S_trn_arr.append(S_trn)
-	S_rot_arr.append(S_rot)
-	S_tot_arr.append(S_trn+S_rot)
+	return S_trn, S_rot, S_trn + S_rot
 
 
