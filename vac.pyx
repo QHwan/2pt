@@ -13,17 +13,14 @@ from tqdm import tqdm
 import MDAnalysis as md
 import matplotlib.pyplot as plt
 
-cpdef vac(universe, selection):
+cpdef vac(data, universe, selection):
 
 	cdef int i, j, k, l, n_h2os, n_frames, n_per_mol
-	cdef int frame
-
+	cdef int i0
+	cdef int len_vac
 	
-	cdef float m_o, m_h, m_c, t, dt, M
-	cdef float com_x, com_y, com_z, v_vib_x, v_vib_y, v_vib_z
-	cdef float rr_x, rr_y, rr_z, I_xx, I_yy, I_zz, I_xy, I_yx, I_yz, I_zy, I_xz, I_zx, Ip_x, Ip_y, Ip_z, Ip_tot
-	cdef float w_x, w_y, w_z, w2_x, w2_y, w2_z
-
+	cdef float m_o, m_h, t, dt, M
+	cdef float ref
 
 	start = time.time()
 
@@ -36,16 +33,15 @@ cpdef vac(universe, selection):
 	t = u.trajectory[-1].time * 0.5
 	dt = u.trajectory[1].time - u.trajectory[0].time
 
+	data_ti = u.trajectory[0].time
+	data_tf = t*2
+
 	m_o = 15.99998
 	m_h = 1.00001
 	m_c = 12.011
 	M = (m_o+m_h*2)
 	n_per_mol = 3
 	cdef float[:] m_arr = np.array([m_o, m_h, m_h], dtype=np.float32)
-
-	# Always check!!
-	# C1, H1, H2, H3, O1, H4
-
 
 	cdef float[:,:,:,:] r_mat = np.zeros((n_frames,n_h2os,n_per_mol,3), dtype=np.float32)
 
@@ -156,7 +152,6 @@ cpdef vac(universe, selection):
 	cdef float[:] vac_trn_arr = np.zeros(int(t/dt), dtype=np.float32)
 	cdef float[:] vac_rot_arr = np.zeros(int(t/dt), dtype=np.float32)
 
-	cdef int len_vac
 	len_vac = len(vac_trn_arr)
 
 	cdef float[:,:] vdot_trn_arr = np.zeros((len_vac,n_h2os), dtype=np.float32)
@@ -167,17 +162,20 @@ cpdef vac(universe, selection):
 	for i in range(n_frames-len_vac):
 		for j in range(len_vac):
 			for k in range(n_h2os):
-				vdot_trn_arr[j,k] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])
+				vac_trn_arr[j] += M*(v_trn_mat[i,k,0]*v_trn_mat[i+j,k,0]+v_trn_mat[i,k,1]*v_trn_mat[i+j,k,1]+v_trn_mat[i,k,2]*v_trn_mat[i+j,k,2])
 
 				for l in range(n_per_mol):
-					vdot_rot_arr[j,k] += m_arr[l]*(v_rot_mat[i,k,l,0]*v_rot_mat[i+j,k,l,0]+v_rot_mat[i,k,l,1]*v_rot_mat[i+j,k,l,1]+v_rot_mat[i,k,l,2]*v_rot_mat[i+j,k,l,2])
+					vac_rot_arr[j] += m_arr[l]*(v_rot_mat[i,k,l,0]*v_rot_mat[i+j,k,l,0]+v_rot_mat[i,k,l,1]*v_rot_mat[i+j,k,l,1]+v_rot_mat[i,k,l,2]*v_rot_mat[i+j,k,l,2])
 
 
 	t_arr = [dt*i for i in range(len_vac)]
 	for j in range(len_vac):
-		for k in range(n_h2os):
-			vac_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len_vac)
-			vac_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len_vac)
+		vac_trn_arr[j] /= n_frames - len_vac
+		vac_rot_arr[j] /= n_frames - len_vac
+	#	for k in range(n_h2os):
+	#		vac_trn_arr[j] += vdot_trn_arr[j,k]/(n_frames-len_vac)
+	#		vac_rot_arr[j] += vdot_rot_arr[j,k]/(n_frames-len_vac)
+
 
 	return t_arr, vac_trn_arr, vac_rot_arr
 

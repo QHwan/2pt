@@ -4,7 +4,7 @@ import scipy.optimize
 import MDAnalysis as md
 import matplotlib.pyplot as plt
 
-def entropy(u, sel, v_arr, s_trn_arr, s_rot_arr, T, V):
+def entropy(data, u, sel):
 	k = 1.380649*1e-23 # (J/ K)
 	N_avo = 6.02214*1e23
 
@@ -12,6 +12,11 @@ def entropy(u, sel, v_arr, s_trn_arr, s_rot_arr, T, V):
 	h = 6.62607*1e-34 # (Js)
 
 	N = 1
+	T = data.T
+	V = data.V
+	v_arr = data.freq_vec
+	s_trn_arr = data.dos_trn_vec
+	s_rot_arr = data.dos_rot_vec
 
 	I_px, I_py, I_pz = 0.5926, 1.3334, 1.926
 
@@ -98,6 +103,7 @@ def entropy(u, sel, v_arr, s_trn_arr, s_rot_arr, T, V):
 	#print("Rotational entropy: solid {}, gas {}, total {}".format(S_rot_sol, S_rot_gas, S_rot))
 	#print(np.trapz(np.multiply(s_rot_arr, W_trn_sol_arr), v_arr) * k*N_avo/N)
 
-	return S_trn, S_rot, S_trn + S_rot
-
+	data.S_trn = S_trn
+	data.S_rot = S_rot
+	data.S_tot = S_trn + S_rot
 
